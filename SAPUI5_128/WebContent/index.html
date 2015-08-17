@@ -116,55 +116,9 @@
 
 				}());
 
-				(function() {
-					
-					function transformer(oResponse) {
-						
-						var oJSDocLinks = {
-							ref: "docs/api/symbols/sap.ui.html",
-							links: []
-						};
 
-						function initLinks(oParent) {
-							var $ = jQuery(this);
-							var aLinks = [];
-							var oLink = {text: $.children("name").text(), tooltip: "", ref: "docs/api/" + $.children("ref").text(), links: []};
-							oParent.links.push(oLink);
-							var $children = $.children("children").children();
-							if($children.size() > 0){
-								$children.each(function(){ initLinks.call(this, oLink); }); 
-							}
-						}
-
-						if ( oResponse ) {
-							jQuery(oResponse.documentElement).children("namespace").each(function(){ initLinks.call(this, oJSDocLinks); });
-						} 
-
-						// TODO include in index
-						oJSDocLinks.links.push({text: "Experimental APIs", tooltip: "", ref: "docs/api/experimental.html", links: []});
-						oJSDocLinks.links.push({text: "Deprecated APIs", tooltip: "", ref: "docs/api/deprecation.html", links: []});
-						oJSDocLinks.links.push({text: "Security Relevant APIs", tooltip: "", ref: "docs/api/security.html", links: []});
-
-						return oJSDocLinks;
-					}
-					
-					oDemokit.addIndex("api", {
-						caption: "API Reference", 
-						url : "docs/api/index.xml", 
-						transformer: transformer
-					});
-
-				}());
 				
-				oDemokit.addIndex("demoApps", {
-					caption : "Demo Apps",
-					index : {
-						ref: "demoapps.html",
-						links : [
-							{text: "Demo Apps", ref: "demoapps.html"}
-						]
-					}
-				});
+
 
 				oDemokit.addIndex("iconExplorer", {
 					caption : "Icons",
@@ -177,25 +131,9 @@
 					}
 				});
 
-				oDemokit.addIndex("versioninfo", {
-					caption : "Version Info",
-					index : {
-						ref: "versioninfo.html",
-						links : [
-							{text: "Version Info", ref:"versioninfo.html"}
-						]
-					}
-				});
 
-				oDemokit.addIndex("license", {
-					caption : "License",
-					index : {
-						ref: "LICENSE.txt",
-						links : [
-							{text: "License", ref:"LICENSE.txt"}
-						]
-					}
-				});
+
+
 
 			});
 
